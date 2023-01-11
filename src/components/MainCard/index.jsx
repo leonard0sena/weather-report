@@ -1,24 +1,21 @@
 import "./style.css"
 
-function MainWeatherCard ({maxTemperature, minTemperature, cityName}) {
+function MainWeatherCard ({maxTemperature, minTemperature, cityName, icon, description}) {
   return(
     <>
-      <div className="background">
-        <div className="day-wrapper">
-          <div>
-            <div className="icon-wrapper">
-              <img className="day-img" src="https://icons.alboompro.com/v1/bold/weather/weather/000000/weather-cloud-thunder.svg"></img>
-              <p>22 °C</p>
-            </div>
-            <div className="city-wrapper">
-              <p className="city"> {cityName} </p>
-            </div>
-          </div>  
-          <div>
-            <p>min: {minTemperature}</p>
-            <p>max: {maxTemperature}</p>
-          </div>
-        </div>  
+      <div className="day-wrapper">
+        <div>
+          <img className="day-img" src={`http://openweathermap.org/img/wn/${icon}@2x.png`}></img>
+          <p className="city"> {cityName} </p>
+          <p className="description">{description}</p>
+        </div>
+        <div>
+          <p>22 °C</p>
+        </div>
+        <div>
+          <p>min: {minTemperature.toFixed(0)} °C</p>
+          <p>max: {maxTemperature.toFixed(0)} °C</p>
+        </div>
       </div>
     </>      
   )

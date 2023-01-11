@@ -4,7 +4,7 @@ import MainWeatherCard from './components/MainCard';
 import WeekWeatherCard from './components/WeekCard';
 
 function App() {
-  const [MainCardData, setMainCardData] = useState('')
+  const [mainCardData, setMainCardData] = useState(null)
   const [city, setCity] = useState('')
   const [weatherData, setWeatherData] = useState(null)
   const [coordsLoaded, setCoordsLoaded] = useState(false)
@@ -14,7 +14,6 @@ function App() {
     navigator.geolocation.getCurrentPosition(position => {
       setCoords({ latitude: position.coords.latitude, longitude: position.coords.longitude })
       setCoordsLoaded(true)
-      console.log(coords)
     })
   }, [coordsLoaded])
 
@@ -33,25 +32,34 @@ function App() {
     setMainCardData(response.list[0])
     setCity(response.city.name)
   }
-
-  console.log(MainCardData)
-
   return (
-    <>
-      <MainWeatherCard />
+    <div className='wrapper'>
       {/* lembrar que API está enviando previsões apenas de 3 em 3 horas */}
       <div className='main-card-wrapper'>
+        {mainCardData && (
+          <MainWeatherCard 
+          maxTemperature={mainCardData.main.temp_max} 
+          minTemperature={mainCardData.main.temp_min} 
+          cityName={city} 
+          icon={mainCardData.weather[0].icon}
+          description={mainCardData.weather[0].description}
+          date={mainCardData.dt_txt}
+          />
+        )}
+      </div>
+      <div className='main-card-wrapper'>
         {weatherData && weatherData.map((day, index) => (
-          <WeekWeatherCard key={index} maxTemperature={day.main.temp_max} minTemperature={day.main.temp_min} humidity={day.main.humidity}/>
+          <WeekWeatherCard 
+          key={index} 
+          maxTemperature={day.main.temp_max} 
+          minTemperature={day.main.temp_min} 
+          humidity={day.main.humidity} 
+          icon={day.weather[0].icon}
+          date={day.dt_txt}
+          />
         ))}
       </div>
-    </>
- 
-    // <div className='main-card-wrapper'>
-    //   {weatherData && weatherData.map((day, index) => (
-    //     <MainWeatherCard key={index} maxTemperature={day.main.temp_max} minTemperature={day.main.temp_min} cityName={city}/>
-    //   ))}
-    // </div>
+    </div>
 
   )
 }

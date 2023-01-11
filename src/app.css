@@ -1,3 +1,9 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
 .main-card-wrapper {
   display: flex;
   flex-direction: column;

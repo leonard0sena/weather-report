@@ -1,13 +1,9 @@
-.background {
-  background-color: #ccced8;
-  border-radius: 20px;
-}
-
 .day-wrapper {
   display: flex;
-  justify-content: center;
-  padding: 60px;
-  gap: 60px;
+  background-color: #ccced8;
+  border-radius: 20px;
+  justify-content: space-around;
+  align-items: center;
 }
 
 .icon-wrapper {
@@ -16,5 +12,10 @@
 }
 
 .day-img {
-  width: 50px;
+  width: 150px;
+}
+
+.city {
+  text-align: center;
+  background-color: aqua;
 }
