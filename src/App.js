@@ -1,10 +1,13 @@
 import { useEffect, useState } from 'react';
-import './app.css';
+
 import MainWeatherCard from './components/MainCard';
 import WeekWeatherCard from './components/WeekCard';
 
+import { AppWrapper, MainCardWrapper } from './styles/app'
+
 function App() {
   const [mainCardData, setMainCardData] = useState(null)
+  const [country, setCountry] = useState('')
   const [city, setCity] = useState('')
   const [weatherData, setWeatherData] = useState(null)
   const [coordsLoaded, setCoordsLoaded] = useState(false)
@@ -31,23 +34,24 @@ function App() {
     setWeatherData(response.list)
     setMainCardData(response.list[0])
     setCity(response.city.name)
+    setCountry(response.city.country)
   }
   return (
-    <div className='wrapper'>
-      {/* lembrar que API está enviando previsões apenas de 3 em 3 horas */}
-      <div className='main-card-wrapper'>
+    <AppWrapper>
+      <MainCardWrapper>
         {mainCardData && (
           <MainWeatherCard 
           maxTemperature={mainCardData.main.temp_max} 
           minTemperature={mainCardData.main.temp_min} 
-          cityName={city} 
+          cityName={city}
+          country={country}
           icon={mainCardData.weather[0].icon}
           description={mainCardData.weather[0].description}
           date={mainCardData.dt_txt}
           />
         )}
-      </div>
-      <div className='main-card-wrapper'>
+      </MainCardWrapper>
+      <MainCardWrapper>
         {weatherData && weatherData.map((day, index) => (
           <WeekWeatherCard 
           key={index} 
@@ -58,8 +62,8 @@ function App() {
           date={day.dt_txt}
           />
         ))}
-      </div>
-    </div>
+      </MainCardWrapper>
+    </AppWrapper>
 
   )
 }

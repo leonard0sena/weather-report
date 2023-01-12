@@ -1,12 +1,12 @@
 import "./style.css"
 
-function MainWeatherCard ({maxTemperature, minTemperature, cityName, icon, description}) {
+function MainWeatherCard ({maxTemperature, minTemperature, cityName, icon, description, country}) {
   return(
     <>
       <div className="day-wrapper">
         <div>
           <img className="day-img" src={`http://openweathermap.org/img/wn/${icon}@2x.png`}></img>
-          <p className="city"> {cityName} </p>
+          <p className="city"> {cityName} , {country} </p>
           <p className="description">{description}</p>
         </div>
         <div>
