@@ -2,8 +2,9 @@ import { useEffect, useState } from 'react';
 
 import MainWeatherCard from './components/MainCard';
 import WeekWeatherCard from './components/WeekCard';
+import SearchInput from './components/SearchInput';
 
-import { AppWrapper, MainCardWrapper } from './styles/app'
+import { AppWrapper, DayCardWrapper, WeekCardWrapper } from './styles/app'
 
 function App() {
   const [mainCardData, setMainCardData] = useState(null)
@@ -12,12 +13,12 @@ function App() {
   const [weatherData, setWeatherData] = useState(null)
   const [coordsLoaded, setCoordsLoaded] = useState(false)
   const [coords, setCoords] = useState({})
-  
+
   useEffect(() => {
-    navigator.geolocation.getCurrentPosition(position => {
-      setCoords({ latitude: position.coords.latitude, longitude: position.coords.longitude })
-      setCoordsLoaded(true)
-    })
+      navigator.geolocation.getCurrentPosition(position => {
+        setCoords({ latitude: position.coords.latitude, longitude: position.coords.longitude })
+        setCoordsLoaded(true)
+      })
   }, [coordsLoaded])
 
   useEffect(() => {
@@ -36,9 +37,11 @@ function App() {
     setCity(response.city.name)
     setCountry(response.city.country)
   }
+
   return (
     <AppWrapper>
-      <MainCardWrapper>
+      <SearchInput updateCoords={setCoords}/>
+      <DayCardWrapper>
         {mainCardData && (
           <MainWeatherCard 
           maxTemperature={mainCardData.main.temp_max} 
@@ -50,8 +53,8 @@ function App() {
           date={mainCardData.dt_txt}
           />
         )}
-      </MainCardWrapper>
-      <MainCardWrapper>
+      </DayCardWrapper>
+      <WeekCardWrapper>
         {weatherData && weatherData.map((day, index) => (
           <WeekWeatherCard 
           key={index} 
@@ -62,7 +65,7 @@ function App() {
           date={day.dt_txt}
           />
         ))}
-      </MainCardWrapper>
+      </WeekCardWrapper>
     </AppWrapper>
 
   )

@@ -1,9 +1,9 @@
-import "./style.css"
+import { DayWrapper } from './style.js'
 
 function MainWeatherCard ({maxTemperature, minTemperature, cityName, icon, description, country}) {
   return(
     <>
-      <div className="day-wrapper">
+      <DayWrapper>
         <div>
           <img className="day-img" src={`http://openweathermap.org/img/wn/${icon}@2x.png`}></img>
           <p className="city"> {cityName} , {country} </p>
@@ -16,7 +16,7 @@ function MainWeatherCard ({maxTemperature, minTemperature, cityName, icon, descr
           <p>min: {minTemperature.toFixed(0)} °C</p>
           <p>max: {maxTemperature.toFixed(0)} °C</p>
         </div>
-      </div>
+      </DayWrapper>
     </>      
   )
 }
