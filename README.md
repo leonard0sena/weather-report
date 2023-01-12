@@ -26,4 +26,4 @@ Para rodar o ambiente de desenvolvimento rode o seguint\e comando dentro da past
 ```bash
 $ yarn start
 ```
-com isso o projeto ja estará rodando na url indicada no terminal
+com isso o projeto ja estará rodando na url indicada no terminal.
