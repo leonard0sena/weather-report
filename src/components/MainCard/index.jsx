@@ -1,6 +1,6 @@
 import { DayWrapper } from './style.js'
 
-function MainWeatherCard ({maxTemperature, minTemperature, cityName, icon, description, country}) {
+function DayWeatherCard ({maxTemperature, minTemperature, nowTemp, cityName, icon, description, country}) {
   return(
     <>
       <DayWrapper>
@@ -10,7 +10,7 @@ function MainWeatherCard ({maxTemperature, minTemperature, cityName, icon, descr
           <p className="description">{description}</p>
         </div>
         <div>
-          <p>22 °C</p>
+          <p>{nowTemp.toFixed(0)} °C</p>
         </div>
         <div>
           <p>min: {minTemperature.toFixed(0)} °C</p>
@@ -21,4 +21,4 @@ function MainWeatherCard ({maxTemperature, minTemperature, cityName, icon, descr
   )
 }
 
-export default MainWeatherCard
+export default DayWeatherCard

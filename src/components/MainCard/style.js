@@ -18,7 +18,7 @@ export const DayWrapper = styled.div`
 
   .city {
   text-align: center;
-  background-color: aqua;
+  font-size: 20px;
   }
 
   .description {

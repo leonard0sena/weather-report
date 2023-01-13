@@ -27,14 +27,12 @@ function WeekWeatherCard ({maxTemperature, minTemperature, humidity, icon, date}
 
       case '13d':
       case '13n':        
-        return 'rgb(237, 106, 90), rgb(244, 241, 187)'
+        return 'rgb(120, 192, 224), rgb(68, 157, 209)'
 
       case '50d':
       case '50n':        
-        return 'rgb(237, 106, 90), rgb(244, 241, 187)'
+        return 'rgb(107, 96, 84), rgb(146, 148, 135)'
 
-      default:
-        return 'rgb(237, 106, 90), rgb(244, 241, 187)'
     }
   }
 

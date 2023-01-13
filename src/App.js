@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-import MainWeatherCard from './components/MainCard';
+import DayWeatherCard from './components/MainCard';
 import WeekWeatherCard from './components/WeekCard';
 import SearchInput from './components/SearchInput';
 
@@ -43,7 +43,8 @@ function App() {
       <SearchInput updateCoords={setCoords}/>
       <DayCardWrapper>
         {mainCardData && (
-          <MainWeatherCard 
+          <DayWeatherCard
+          nowTemp={mainCardData.main.temp}
           maxTemperature={mainCardData.main.temp_max} 
           minTemperature={mainCardData.main.temp_min} 
           cityName={city}
