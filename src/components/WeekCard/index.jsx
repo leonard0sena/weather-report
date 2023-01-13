@@ -1,6 +1,16 @@
-import { WeekWrapper } from './style.js'
+import { WeekWrapper, Humidity, Temperature, WeekImg, HumidityImg, DateTime } from './style.js'
 
 function WeekWeatherCard ({maxTemperature, minTemperature, humidity, icon, date}) {
+  const day = new Intl.DateTimeFormat('pt-BR', {
+    day: '2-digit',
+    month: '2-digit',
+  }).format(new Date(date))
+
+  const time = new Intl.DateTimeFormat('pt-BR', {
+    hour: "2-digit",
+    minute: "2-digit"
+  }).format(new Date(date))
+  
   function getBgColor(icon) {
     switch (icon) {
       case '01d':
@@ -39,16 +49,20 @@ function WeekWeatherCard ({maxTemperature, minTemperature, humidity, icon, date}
   return(
     <>
       <WeekWrapper bgColor={getBgColor(icon)}>
-        <p>{date}</p>
-        <div className='humidity'>
-          <img className="humidity-img" src="https://icons.alboompro.com/v1/bold/health-beauty/blood/000000/blood-drop.svg" />
+        <DateTime>
+          <p>{day}</p>
+          <p>-</p>
+          <p>{time}</p>
+        </DateTime>
+        <Humidity>
+          <HumidityImg src="https://icons.alboompro.com/v1/bold/health-beauty/blood/000000/blood-drop.svg" />
           <p>{humidity}%</p>
-        </div>
-        <img className="week-img" src={`http://openweathermap.org/img/wn/${icon}@2x.png`}/>
-        <div className="temperature">
+        </Humidity>
+        <WeekImg src={`http://openweathermap.org/img/wn/${icon}@2x.png`}/>
+        <Temperature>
           <p>min: {minTemperature.toFixed(0)} °C</p>
           <p>max: {maxTemperature.toFixed(0)} °C</p>
-        </div>
+        </Temperature>
       </WeekWrapper>
 
     </>      

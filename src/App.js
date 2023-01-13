@@ -44,26 +44,26 @@ function App() {
       <DayCardWrapper>
         {mainCardData && (
           <DayWeatherCard
-          nowTemp={mainCardData.main.temp}
-          maxTemperature={mainCardData.main.temp_max} 
-          minTemperature={mainCardData.main.temp_min} 
-          cityName={city}
-          country={country}
-          icon={mainCardData.weather[0].icon}
-          description={mainCardData.weather[0].description}
-          date={mainCardData.dt_txt}
+            nowTemp={mainCardData.main.temp}
+            maxTemperature={mainCardData.main.temp_max} 
+            minTemperature={mainCardData.main.temp_min} 
+            cityName={city}
+            country={country}
+            icon={mainCardData.weather[0].icon}
+            description={mainCardData.weather[0].description}
+            date={mainCardData.dt_txt}
           />
         )}
       </DayCardWrapper>
       <WeekCardWrapper>
         {weatherData && weatherData.map((day, index) => (
           <WeekWeatherCard 
-          key={index} 
-          maxTemperature={day.main.temp_max} 
-          minTemperature={day.main.temp_min} 
-          humidity={day.main.humidity} 
-          icon={day.weather[0].icon}
-          date={day.dt_txt}
+            key={index} 
+            maxTemperature={day.main.temp_max} 
+            minTemperature={day.main.temp_min} 
+            humidity={day.main.humidity} 
+            icon={day.weather[0].icon}
+            date={day.dt_txt}
           />
         ))}
       </WeekCardWrapper>

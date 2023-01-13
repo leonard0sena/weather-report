@@ -12,5 +12,5 @@ export const GlobalStyle = createGlobalStyle`
     justify-content: center;
     margin-top: 150px;
     background-color: #abd3e8;
-  }
+  } 
 `

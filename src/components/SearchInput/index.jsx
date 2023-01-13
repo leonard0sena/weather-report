@@ -4,7 +4,6 @@ import { SearchInputWrapper, SearchButton, SearchInputCamp } from './style.js'
 
 function SearchInput ({ updateCoords }) {
   const [inputValue, setInputValue] = useState("")
-  const [coordst, setCoordst] = useState({})
 
   async function handleSearch() {
     await fetchData()
@@ -15,7 +14,6 @@ function SearchInput ({ updateCoords }) {
     const response = await initialResponse.json()
     updateCoords({ latitude: response.coord.lat, longitude: response.coord.lon })
   }
-  console.log(coordst)
 
   return(
     <SearchInputWrapper>
