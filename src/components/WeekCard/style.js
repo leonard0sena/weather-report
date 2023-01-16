@@ -22,6 +22,11 @@ export const WeekWrapper = styled.div`
     gap: 10px;
     align-items: center;
   `
+
+  export const HumidityImg = styled.img`
+    width: 20px;
+  `
+
   export const Temperature = styled.div`
     display: flex;
     width: 32%;
@@ -30,8 +35,4 @@ export const WeekWrapper = styled.div`
 
   export const WeekImg = styled.img`
     width: 60px;
-  `
-
-  export const HumidityImg = styled.img`
-    width: 20px;
   `

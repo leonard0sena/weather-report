@@ -1,22 +1,28 @@
-import { DayWrapper } from './style.js'
+import { DayWrapper, IconWrapper, LeftSideWrapper, RightSideWrapper, NowTempWrapper, DayImg, City, Description, Humidity, HumidityImg } from './style.js'
 import { getBgColor } from '../WeekCard'
 
-function DayWeatherCard ({maxTemperature, minTemperature, nowTemp, cityName, icon, description, country}) {
+function DayWeatherCard ({maxTemperature, minTemperature, nowTemp, cityName, icon, description, country, humidity}) {
   return(
     <>
       <DayWrapper bgColor={getBgColor(icon)}>
-        <div>
-          <img className="day-img" src={`http://openweathermap.org/img/wn/${icon}@2x.png`}></img>
-          <p className="city"><img></img> {cityName} , {country} </p>
-          <p className="description">{description}</p>
-        </div>
-        <div>
-          <p>{nowTemp.toFixed(0)} °C</p>
-        </div>
-        <div>
+        <LeftSideWrapper>
+          <IconWrapper>
+            <DayImg src={`http://openweathermap.org/img/wn/${icon}@2x.png`}/>
+            <City>{cityName} , {country} </City>
+            <Description>{description} </Description>
+          </IconWrapper>
+          <NowTempWrapper>
+            <p>{nowTemp.toFixed(0)} °C</p>
+          </NowTempWrapper>
+        </LeftSideWrapper>
+        <RightSideWrapper>
+          <Humidity>
+            <HumidityImg src="https://icons.alboompro.com/v1/bold/health-beauty/blood/000000/blood-drop.svg" />
+            <p>{humidity}%</p>
+          </Humidity>
           <p>min: {minTemperature.toFixed(0)} °C</p>
           <p>max: {maxTemperature.toFixed(0)} °C</p>
-        </div>
+        </RightSideWrapper>
       </DayWrapper>
     </>      
   )

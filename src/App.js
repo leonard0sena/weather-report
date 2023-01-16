@@ -46,7 +46,8 @@ function App() {
           <DayWeatherCard
             nowTemp={mainCardData.main.temp}
             maxTemperature={mainCardData.main.temp_max} 
-            minTemperature={mainCardData.main.temp_min} 
+            minTemperature={mainCardData.main.temp_min}
+            humidity={mainCardData.main.humidity}  
             cityName={city}
             country={country}
             icon={mainCardData.weather[0].icon}

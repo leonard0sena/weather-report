@@ -18,6 +18,9 @@ function SearchInput ({ updateCoords }) {
       setErrorMsg(false)
     } catch (error) {
       setErrorMsg(true)
+      setTimeout(() => {
+        setErrorMsg(false)
+      }, "3000")
     }
   }
 
@@ -31,7 +34,7 @@ function SearchInput ({ updateCoords }) {
         <SearchButton onClick={handleSearch}>Pesquisar</SearchButton>
       </SearchInputWrapper>
       <ErrorMsgWrapper>
-        {errorMsg && <ErrorMsgWrapper>Cidade Inexistente, tente novamente</ErrorMsgWrapper>}
+        {errorMsg && <ErrorMsgWrapper>Cidade Inexistente, tente novamente.</ErrorMsgWrapper>}
       </ErrorMsgWrapper>
     </>
   )
