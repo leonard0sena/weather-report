@@ -4,6 +4,7 @@ export const AppWrapper = styled.div`
   display: flex;
   flex-direction: column;
   gap: 20px;
+  width: 50%;
 `
 
 export const DayCardWrapper = styled.div`

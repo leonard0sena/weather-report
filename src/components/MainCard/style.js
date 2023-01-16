@@ -2,7 +2,7 @@ import styled from 'styled-components'
 
 export const DayWrapper = styled.div`
   display: flex;
-  background-color: #ccced8;
+  background-image: linear-gradient(90deg,${props => props.bgColor});
   border-radius: 20px;
   justify-content: space-around;
   align-items: center;

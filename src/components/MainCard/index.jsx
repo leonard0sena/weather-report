@@ -1,12 +1,13 @@
 import { DayWrapper } from './style.js'
+import { getBgColor } from '../WeekCard'
 
 function DayWeatherCard ({maxTemperature, minTemperature, nowTemp, cityName, icon, description, country}) {
   return(
     <>
-      <DayWrapper>
+      <DayWrapper bgColor={getBgColor(icon)}>
         <div>
           <img className="day-img" src={`http://openweathermap.org/img/wn/${icon}@2x.png`}></img>
-          <p className="city"> {cityName} , {country} </p>
+          <p className="city"><img></img> {cityName} , {country} </p>
           <p className="description">{description}</p>
         </div>
         <div>

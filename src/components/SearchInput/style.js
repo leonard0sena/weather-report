@@ -18,4 +18,13 @@ export const SearchButton = styled.button`
  width: 20%;
  border-radius: 10px;
  font-size: 25px;
+ 
 `
+
+export const ErrorMsgWrapper = styled.div`
+ width: 100%;
+ background-color: red;
+ border-radius: 10px;
+ font-size: 25px;
+
+ `
