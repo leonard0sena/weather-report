@@ -9,7 +9,7 @@ export const GlobalStyle = createGlobalStyle`
     width: 100vw;
     display: flex;
     justify-content: center;
-    margin-top: 5%;
+    margin-top: 4%;
     background-color: #abd3e8;
   } 
 `

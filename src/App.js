@@ -3,8 +3,10 @@ import { useEffect, useState } from 'react';
 import DayWeatherCard from './components/MainCard';
 import WeekWeatherCard from './components/WeekCard';
 import SearchInput from './components/SearchInput';
+import { WeekCardSkeleton, DayCardSkeleton } from './components/CardSkeleton'
 
 import { AppWrapper, DayCardWrapper, WeekCardWrapper } from './styles/app'
+import { SkeletonTheme } from 'react-loading-skeleton';
 
 function App() {
   const [mainCardData, setMainCardData] = useState(null)
@@ -39,36 +41,40 @@ function App() {
   }
 
   return (
-    <AppWrapper>
-      <SearchInput updateCoords={setCoords}/>
-      <DayCardWrapper>
-        {mainCardData && (
-          <DayWeatherCard
-            nowTemp={mainCardData.main.temp}
-            maxTemperature={mainCardData.main.temp_max} 
-            minTemperature={mainCardData.main.temp_min}
-            humidity={mainCardData.main.humidity}  
-            cityName={city}
-            country={country}
-            icon={mainCardData.weather[0].icon}
-            description={mainCardData.weather[0].description}
-            date={mainCardData.dt_txt}
-          />
-        )}
-      </DayCardWrapper>
-      <WeekCardWrapper>
-        {weatherData && weatherData.map((day, index) => (
-          <WeekWeatherCard 
-            key={index} 
-            maxTemperature={day.main.temp_max} 
-            minTemperature={day.main.temp_min} 
-            humidity={day.main.humidity} 
-            icon={day.weather[0].icon}
-            date={day.dt_txt}
-          />
-        ))}
-      </WeekCardWrapper>
-    </AppWrapper>
+    <SkeletonTheme baseColor='#818D92' highlightColor='#525252'>
+      <AppWrapper>
+        <SearchInput updateCoords={setCoords}/>
+        <DayCardWrapper>  
+          {!weatherData && <DayCardSkeleton /> }
+          {mainCardData && (
+            <DayWeatherCard
+              nowTemp={mainCardData.main.temp}
+              maxTemperature={mainCardData.main.temp_max} 
+              minTemperature={mainCardData.main.temp_min}
+              humidity={mainCardData.main.humidity}  
+              cityName={city}
+              country={country}
+              icon={mainCardData.weather[0].icon}
+              description={mainCardData.weather[0].description}
+              date={mainCardData.dt_txt}
+            />
+          )}
+        </DayCardWrapper>
+        <WeekCardWrapper>
+          {!weatherData && <WeekCardSkeleton cards={6}  /> }
+          {weatherData && weatherData.map((day, index) => (
+            <WeekWeatherCard 
+              key={index} 
+              maxTemperature={day.main.temp_max} 
+              minTemperature={day.main.temp_min} 
+              humidity={day.main.humidity} 
+              icon={day.weather[0].icon}
+              date={day.dt_txt}
+            />
+          ))}
+        </WeekCardWrapper>
+      </AppWrapper>
+    </SkeletonTheme>
 
   )
 }
