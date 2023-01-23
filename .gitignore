@@ -1,5 +1,6 @@
 *.log
 .env
+.yarn
 
-*node_modules
-.happypack
+node_modules
+
