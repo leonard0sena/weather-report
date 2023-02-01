@@ -6,51 +6,58 @@ export const DayWrapper = styled.div`
   border-radius: 20px;
   justify-content: space-around;
   align-items: center;
+
+  @media screen and (min-width: 280px) and (max-width: 1140px) {
+    display: relative;
+    justify-content: space-around;
+    align-items: center;
+  }
   `
 
-export const IconWrapper = styled.div`
-  gap: 20px;
-  display: flex;
-  flex-direction: column;
-`
-
   export const DayImg = styled.img`
-  width: 150px;
+  width: 100px;
+
+  @media screen and (min-width: 280px) and (max-width: 1140px) {
+    width: 70px;
+  }
   `
 
   export const City = styled.div`
   text-align: center;
   font-size: 25px;
-  `
 
-  export const Description = styled.div`
-  text-align: center;
-  margin-bottom: 10px;
-  `
-
-  export const LeftSideWrapper = styled.div`
-  display: flex;
-  `
-
-  export const RightSideWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-  font-size: 20px;
+  @media screen and (min-width: 280px) and (max-width: 1140px) {
+    text-align: center;
+    font-size: 15px;
+  }
   `
 
   export const NowTempWrapper = styled.div`
   display: flex;
-  align-self: flex-start;
-  font-size: 40px;
+  align-items: center;
+  font-size: 25px ;
+
+  @media screen and (min-width: 280px) and (max-width: 1140px) {
+    display: flex;
+    align-self: flex-start;
+    font-size: 20px;
+  }
+  `
+  export const CityDescriptionWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
   `
 
-  export const Humidity = styled.div`
+  export const SvgWrapper = styled.div`
     display: flex;
     gap: 10px;
     align-items: center;
-  `
 
-  export const HumidityImg = styled.img`
-    width: 20px;
+    @media screen and (min-width: 280px) and (max-width: 1140px) {
+    display: relative;
+    justify-content: space-around;
+    align-items: center;
+  }
   `

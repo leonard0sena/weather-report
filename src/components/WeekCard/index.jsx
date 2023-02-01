@@ -1,4 +1,6 @@
-import { WeekWrapper, Humidity, Temperature, WeekImg, HumidityImg, DateTime } from './style.js'
+import { WeekWrapper, Humidity, Temperature, WeekImg, HumidityImg, DateTime, SvgWrapper, SvgIcons } from './style.js'
+
+import { DropIcon, MaxTempIcon, MinTempIcon } from '../../icons/icons'
 
 
 export const getBgColor = (icon) => {
@@ -57,13 +59,19 @@ function WeekWeatherCard ({maxTemperature, minTemperature, humidity, icon, date}
           <p>{time}</p>
         </DateTime>
         <Humidity>
-          <HumidityImg src="https://icons.alboompro.com/v1/bold/health-beauty/blood/000000/blood-drop.svg" />
+          <DropIcon />
           <p>{humidity}%</p>
         </Humidity>
         <WeekImg src={`http://openweathermap.org/img/wn/${icon}@2x.png`}/>
         <Temperature>
-          <p>min: {minTemperature.toFixed(0)} °C</p>
-          <p>max: {maxTemperature.toFixed(0)} °C</p>
+          <SvgWrapper>
+            <MaxTempIcon />
+            <p>{maxTemperature.toFixed(0)} °C</p>
+          </SvgWrapper>
+          <SvgWrapper>
+            <MinTempIcon />
+            <p>{minTemperature.toFixed(0)} °C</p>
+          </SvgWrapper>
         </Temperature>
       </WeekWrapper>
 

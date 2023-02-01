@@ -1,6 +1,5 @@
 import styled from 'styled-components'
 
-
 export const WeekWrapper = styled.div`
   display: flex;
   width: 91%;
@@ -35,4 +34,14 @@ export const WeekWrapper = styled.div`
 
   export const WeekImg = styled.img`
     width: 60px;
+  `
+
+  export const SvgWrapper = styled.div`
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  `
+
+  export const SvgIcons = styled.img`
+  width: 20px;
   `
